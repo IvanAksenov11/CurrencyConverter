@@ -29,6 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                 .and()
                     .logout()
+                    .logoutSuccessUrl("/")
                     .permitAll();
     }
 
@@ -39,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(NoOpPasswordEncoder.getInstance())
                 .usersByUsernameQuery("select username, password, enabled from usr where username=?")
                 .authoritiesByUsernameQuery(
-                        "SELECT username, 'ROLE_USER' FROM usr WHERE username=?");;
+                        "SELECT username, 'ROLE_USER' FROM usr WHERE username=?");
     }
 }
 
